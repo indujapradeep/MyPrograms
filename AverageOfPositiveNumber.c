@@ -15,4 +15,3 @@ void main()
 	}
 	printf("%d is the Average of all positive numbers",sum/count);
 }
-

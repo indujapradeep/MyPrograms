@@ -100,7 +100,7 @@ int main()
 			print(start);
 			break;
 		case 3:
-			push(start);
+			start=push(start);
 			break;
 		case 4:
 			start=pop(start);

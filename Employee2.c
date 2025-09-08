@@ -8,36 +8,34 @@ struct Employee
 	int deptNumber;
 	struct Employee *next;
 };
-struct Employee *create()
+
+
+struct Employee *insert(struct Employee *start)
 {	
-	struct Employee *start=NULL;
 	struct Employee *nn=NULL;
 	struct Employee *ptr=NULL;
 	nn=(struct Employee*)malloc(sizeof(struct Employee));
-	int i,n;
-	printf("Enter the No of Employees:");
-	scanf("%d",&n);
-	for(i=0;i<n;i++)
+	printf("Enter the ID_NO:");
+	scanf("%d",&nn->idNumber);
+	printf("Enter your Name:");
+	scanf("%s",&nn->name);
+	printf("Enter your City:");
+	scanf("%s",&nn->city);
+	printf("Enter your Department No:");
+	scanf("%d",&nn->deptNumber);
+	nn->next=NULL;
+	if(start==NULL)
 	{
-		nn=(struct Employee*)malloc(sizeof(struct Employee));
-		printf("Enter the ID_NO:");
-		scanf("%d",&nn->idNumber);
-		printf("Enter your Name:");
-		scanf("%s",&nn->name);
-		printf("Enter your City:");
-		scanf("%s",&nn->city);
-		printf("Enter your Department No:");
-		scanf("%d",&nn->deptNumber);
-		nn->next=NULL;
-		if(start==NULL)
+		start=nn;			
+	}			
+	else
+	{
+		ptr=start;
+		while(ptr->next!=NULL)
 		{
-			start=ptr=nn;			
-		}			
-		else
-		{
-			ptr->next=nn;
-		 ptr=nn;
+			ptr=ptr->next;
 		}
+		ptr->next=nn;
 	}
 	return start;
 	
@@ -56,7 +54,7 @@ struct Employee* print(struct Employee *start)
 			printf("Name:%s \nCity:%s \nDepartment No:%d \n",ptr->name,ptr->city,ptr->deptNumber);
 		}
 		ptr=ptr->next;
-}
+    }
 }
 
 int main()
@@ -71,7 +69,7 @@ int main()
 		switch(n)
 		{
 			case 1:
-				start=create();
+				start=insert(start);
 				break;
 			case 2:
 				print(start);
